@@ -1,12 +1,15 @@
-# How to call Function
-# from printts import tsprint
-# tsprint("test time stamp")
-
 import pytz
 from datetime import datetime
 
-def tsprint(pmessage):
-    tz_TH = pytz.timezone('Asia/Bangkok')
-    datetime_TH = datetime.now(tz_TH)
-    CTime = datetime_TH.strftime("[%d-%m-%Y|%H:%M:%S]")
-    print(CTime, pmessage)
+def tsprint(*args):
+    # Edit this line to change timezone
+    tz = pytz.timezone('Asia/Bangkok')
+    datetime_Tz = datetime.now(tz)
+    CTime = datetime_Tz.strftime("[%d-%m-%Y|%H:%M:%S]")
+    print(CTime, ' '.join(map(str, args)))
+
+if __name__ == "__main__":
+    tsprint('test', 'time', 'stamp'+'xx')
+
+    # for i in range(len(pytz.common_timezones)):
+    #     print(pytz.common_timezones[i])
